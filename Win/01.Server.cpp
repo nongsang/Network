@@ -14,5 +14,6 @@ int main()
 	MessageBox(NULL, L"윈속 초기화 성공", L"알림", MB_OK);	// 다른 방법으로는 L""을 사용해서 유니코드로 입력해도 된다.
 
 	WSACleanup();	// 윈속 종료
+
 	return 0;
 }
