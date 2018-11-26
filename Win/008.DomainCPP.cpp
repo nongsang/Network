@@ -39,10 +39,10 @@ int main()
 	cout << "도메인 이름 변환 전 : " << TestName << endl;
 
 	ADDRINFO hint;						// 호스트의 정보를 저장하는 구조체
-	ZeroMemory(&hint, sizeof(hint));	// 구조체의 모든 변수를 0으로 초기화한다.
-										// ZeroMemory()는 memset()의 define이니까 뭘 써도 상관은 없다.
+	//ZeroMemory(&hint, sizeof(hint));	// 구조체의 모든 변수를 0으로 초기화한다.
 										// 꼭 해야하는 작업이다.
 										// 안하면 제대로 사용을 할 수 없다.
+	memset(&hint, 0, sizeof(hint));		// ZeroMemory()는 Windows API이며, memset()의 define이기 때문에 이걸 써도 된다.
 	//hint.ai_flags = AI_CANONNAME;		// ai_flags는 옵션이며, ai_canonname 필드에 호스트의 정식명칭을 전달
 	hint.ai_flags = AI_FQDN;			// ai_canonname 필드에 호스트의 별명을 전달
 	hint.ai_family = AF_UNSPEC;			// 접속할 호스트가 TCP인지 UDP인지 상관하지 않겠다.
