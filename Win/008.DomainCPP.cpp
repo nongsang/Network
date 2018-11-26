@@ -48,12 +48,13 @@ int main()
 	hint.ai_socktype = SOCK_STREAM;		// 타입은 TCP
 	hint.ai_protocol = IPPROTO_TCP;		// 프로토콜은 TCP지만 0으로 둬도 상관없다.
 
-	ADDRINFO * result = nullptr;		// HOSTENT처럼 호스트를 가리킬 변수
+	ADDRINFO * result = nullptr;		// 호스트의 정보를 동적으로 할당하여 가리킬 변수
 
 	getaddrinfo(TestName, "80", &hint, &result);	// gethostbyname() 대신에 사용할 수 있는 ANSI 표준 함수
-													// 호스트에 포트번호(80번은 HTTP)로 hint에 있는 프로토콜로 result가 가리키게 한다.
+													// 호스트에 포트번호(80번은 HTTP)로 hint에 있는 프로토콜로 정보를 동적할당하여
+													// result가 가리키게 한다.
 													// 0이면 성공, 그 이외의 값은 에러코드
-													// gethostbyname_r()이라는 함수도 있는데 윈도우즈에서는 제대로 사용할 수 없다.
+													// gethostbyname_r()이라는 대체 함수도 있는데 윈도우즈에서는 사용할 수 없다.
 
 	cout << endl;
 
@@ -83,12 +84,13 @@ int main()
 	// hostname에 도메인 이름으로 변환하여 저장하고,
 	// servInfo에 서비스 이름(HTTP인가 FTP인가)을 저장하는데
 	// 포트 번호로 저장한다.
+	// gethostbyaddr_r()이라는 대체 함수도 있는데 윈도우즈에서는 제대로 사용할 수 없다.
 	getnameinfo((SOCKADDR*)ipv4sock, sizeof(SOCKADDR), hostname, NI_MAXHOST, servInfo, NI_MAXSERV, NI_NUMERICSERV);
 
 	cout << "IP->도메인 주소 변환 : " << hostname << endl;	// DNS 서버에 허용이 되어있지 않으면 제대로된 주소가 나오지 않는다.
 															// 메일서버는 출력이 가능
-	
-	GetAddrInfoW()
+
+	freeaddrinfo(result);	// getaddrinfo()를 이용해서 호스트의 정보를 동적할당한 메모리를 가리키는 result는 다 사용했으면 메모리 해제를 해줘야 한다.
 
 	WSACleanup();
 
@@ -102,4 +104,5 @@ int main()
 // 이 밖에 ADDRINFOEX2, ADDRINFOEX3, ADDRINFOEX4 구조체가 있지만 모두 ADDRINFO에 추가 정보를 저장하는 역할이다.
 // ADDRINFOEX를 사용하면 GetAddrInfoEx(), GetNameInfoEx()를 사용해야 한다.
 // getaddrinfo(), getnameinfo()는 thread safe하므로 gethostbyname(), gethostbyaddr()를 대체하여 사용한다.
+// getaddrinfo()는 호스트 정보를 동정할당하여 저장하므로 freeaddrinfo()로 메모리 해제를 해줘야 한다.
 // IPv4만 사용한다면 gethostbyname_r()나 gethostbyaddr_r()가 thread safe하므로 바꿔서 사용하면 되지만 Windows에서는 사용할 수 없다.
