@@ -78,7 +78,7 @@ int main()
 	SOCKET client_sock;
 	SOCKADDR_IN clientaddr;
 	int addrlen;
-	
+
 	char buf[BUFSIZE];
 
 	while (1)
@@ -92,7 +92,6 @@ int main()
 			break;
 		}
 
-		//printf("[TCP 서버] 클라이언트 접속 : IP 주소 = %s, 포트 번호 = %d\n", inet_ntoa(clientaddr.sin_addr), ntohs(clientaddr.sin_port));
 		cout << "[TCP 서버] 클라이언트 접속 : IP 주소 = " << inet_ntoa(clientaddr.sin_addr) << ", 포트 번호 = " << ntohs(clientaddr.sin_port) << endl;
 
 		while (1)
@@ -108,7 +107,6 @@ int main()
 
 			buf[retval] = '\0';
 
-			//printf("[TCP/%s:%d] %s\n", inet_ntoa(clientaddr.sin_addr), ntohs(clientaddr.sin_port), buf);
 			cout << "[TCP/" << inet_ntoa(clientaddr.sin_addr) << ":" << ntohs(clientaddr.sin_port) << "] " << buf << endl;
 
 			retval = send(client_sock, buf, retval, 0);
@@ -121,7 +119,7 @@ int main()
 		}
 
 		closesocket(client_sock);
-		//printf("[TCP 서버] 클라이언트 종료 : IP 주소 = %s, 포트 번호 = %d\n", inet_ntoa(clientaddr.sin_addr), ntohs(clientaddr.sin_port));
+
 		cout << "[TCP 서버] 클라이언트 종료 : IP 주소 = " << inet_ntoa(clientaddr.sin_addr) << ", 포트 번호 = " << ntohs(clientaddr.sin_port) << endl;
 	}
 
