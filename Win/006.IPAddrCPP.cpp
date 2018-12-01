@@ -28,6 +28,7 @@ int main()
 															// 값을 저장할 변수가 없어도 상관없다.
 															// inet_pton()은 주소를 저장할 IN_ADDR형 변수가 있어야 한다.
 															// 실제로 빅엔디안으로 바꾼 값을 저장하는 기능을 한다.
+															// ipv4num에 ipv4test1을 AF_INET에 맞추어 저장한다는 의미이다.
 	inet_pton(AF_INET, ipv4test1, &ipv4num.s_addr);			// 위의 문장과 같은 의미
 	//InetPton(AF_INET, (LPCWSTR)ipv4test1, &ipv4num);		// inet_pton()과 같은 기능을 하는 Windows 전용 함수
 															// 문자열을 멀티바이트와 유니코드를 구분해서 전달해야 한다.
