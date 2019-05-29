@@ -21,7 +21,7 @@ namespace CPPPP
             IPAddress ipAddr3 = IPAddress.Parse("2001:0000:85a3:0042:1000:8a8e:0370:7334"); // IPv6도 자동으로 해석해 담을 수 있다.
             WriteLine(ipAddr3);
 
-            IPAddress ipAddr4 = IPAddress.Parse("2001::7334");  // 2001과 7334 이외에 모두 0000이라면 ::으로 줄일 수 있다.
+            IPAddress ipAddr4 = IPAddress.Parse("2001::7334");  // 2001과 7334모두 0000이라면 ::으로 줄일 수 있다.
             WriteLine(ipAddr4);
         }
     }
