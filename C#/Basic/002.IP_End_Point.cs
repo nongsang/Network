@@ -15,7 +15,11 @@ namespace CPPPP
             IPEndPoint endpoint = new IPEndPoint(ipAddr, 9000); // EndPoint는 '접점', '종점', '종단점' 등으로 해석한다.
                                                                 // TCP/IP 통신에서 접점은 'IP 주소' + '포트번호'를 나타낸다.
                                                                 // IPEndPoint 클래스로 이 정보들을 묶어줄 수 있다.
-            Console.WriteLine(endpoint);    // IP 주소와 포트 번호가 출력된다.
+            Console.WriteLine(endpoint);    // IP 주소와 포트 번호가 모두 출력된다.
+
+            Console.WriteLine(endpoint.Address);        // 주소 따로 출력
+            Console.WriteLine(endpoint.Port);           // 포트번호 따로 출력
+            Console.WriteLine(endpoint.AddressFamily);  // 패밀리도 출력할 수 있다.
         }
     }
 }
