@@ -26,7 +26,7 @@ namespace CPPPP
             else                                    // 연결 실패하면
                 Console.WriteLine("TCP 연결 실패");
 
-            tcpClient.Close();  // TCP 클라이언트는 Stop()이 아니라 Close()다.
+            tcpClient.Close();  // TCP 클라이언트는 Stop()이 아니라 Close()로 닫는다.
         }
     }
 }
