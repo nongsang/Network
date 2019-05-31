@@ -15,10 +15,10 @@ namespace CPPPP
             TcpListener tcpListener = new TcpListener(IPAddress.Parse("127.0.0.1"), 9000);
 
             tcpListener.Start();
-            Console.WriteLine("TCP 연결 대기");
+            Console.WriteLine("TCP 연결 대기 중");
 
             TcpClient tcpClient = tcpListener.AcceptTcpClient();    // TCP 클라이언트 연결
-            Console.WriteLine("TCP 연결");
+            Console.WriteLine("TCP 연결 성공");
 
             NetworkStream ns = tcpClient.GetStream();   // 연결된 클라이언트에서 보내온 메세지나 보낼 메세지를 NetworkStream에 저장하도록 설정
             byte[] receiveMassage = new byte[100];      // 받은 데이터를 저장할 임시 저장소
