@@ -16,13 +16,13 @@ namespace CPPPP
                                                                                             // TCP 클라이언트는 IP 주소를 string으로 받지만 TCP 리스너는 IPAddress로 받는다.
 
             tcpListener.Start();                // TCP 클라이언트의 연결 요청을 대기
-            Console.WriteLine("TCP 연결 대기");
+            Console.WriteLine("TCP 연결 대기 중");
 
             TcpClient tcpClient = tcpListener.AcceptTcpClient();    // TCP 클라이언트의 연결 요청이 오면 받아들인다.
                                                                     // 연결된 TCP 클라이언트의 정보는 tcpClient에 저장한다.
             Console.WriteLine("TCP 연결");
 
-            tcpListener.Stop(); // TCP 리스너는 Close()가 아니라 Stop()이다.
+            tcpListener.Stop(); // TCP 리스너는 Close()가 아니라 Stop()으로 멈춘다.
         }
     }
 }
