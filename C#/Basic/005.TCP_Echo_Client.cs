@@ -31,7 +31,7 @@ namespace CPPPP
             }
             else
             {
-                Console.WriteLine("TCP 연결 실패");
+                Console.WriteLine("TCP 연결 실패");     // 연결 실패
             }
 
             tcpClient.Close();
