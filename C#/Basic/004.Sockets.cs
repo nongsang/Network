@@ -8,7 +8,7 @@ using System.Net.Sockets;       // TCP, UDP를 이용한 연결기능 및 소켓
 
 namespace CPPPP
 {
-    class Raw_Socket
+    class Sockets
     {
         public static void Main()
         {
