@@ -17,8 +17,14 @@ namespace CPPPP
             serverSock.Bind(new IPEndPoint(IPAddress.Any, 9000));   // 소켓의 정보를 IP 주소 0.0.0.0 에 포트번호 9000으로 설정한다.
                                                                     // IPAddress.Any는 사용가능한 IP 주소를 자동으로 설정해준다.
                                                                     // 루프백주소나 공유기주소 등
-            serverSock.Listen(100);                                 // 서버 소켓이 클라이언트의 연결을 받을 준비를 한다.
-                                                                    // 정수값을 정해주면 한꺼번에 연결을 요청하는 경우 정해준 정수값의 갯수씩 처리를 한다.
+            serverSock.Listen(5);   // 서버 소켓이 클라이언트의 연결을 받을 준비를 한다.
+                                    // backlog는 연결을 요청하는 소켓들이 대기하는 큐다.
+                                    // socket backlog와 kernel backlog가 있는데 kernel backlog는 OS마다 다르지만 리눅스는 1024가 기본이다.
+                                    // socket backlog는 보통 5 ~ 16 사이의 크기로 정해준다.
+                                    // 연결이 되면 backlog에서 대기하던 소켓이 빠진다.
+                                    // 소켓이 빠진다고 해도 큐의 크기가 줄어드는 것은 아니다.
+                                    // 대기열에 공간이 생긴것.
+
             Console.WriteLine("TCP 서버 연결 대기 중");
 
             Socket clientSock = serverSock.Accept();                // 서버 소켓에 연결 요청이 오면 연결을 받아들인다.
