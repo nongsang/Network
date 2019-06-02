@@ -30,6 +30,9 @@ namespace CPPPP
             Socket clientSock = serverSock.Accept();                // 서버 소켓에 연결 요청이 오면 연결을 받아들인다.
                                                                     // 연결된 소켓의 정보는 clientSock에 저장한다.
             Console.WriteLine("TCP 클라이언트 연결 성공 : {0}", clientSock.RemoteEndPoint);  // clientSock.RemoteEndPoint로 연결된 소켓의 IP 주소와 포트번호를 출력한다.
+
+            clientSock.Close(); // 소켓을 사용한 후에는 소켓을 닫아줘야 한다.
+            serverSock.Close(); // 클라이언트 소켓이 전부 닫힌 후에 서버 소켓을 닫아줘야 한다.
         }
     }
 }
