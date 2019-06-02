@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net;               // 인터넷 관련 기능을 쓰려면 추가
-using System.Net.Sockets;       // TCP, UDP를 이용한 연결기능 및 소켓생성을 하려면 추가
+using System.Net;               // IP 주소 클래스 등 네트워크 관련 클래스를 쓰려면 추가
+using System.Net.Sockets;       // TCP, UDP 및 소켓관련 클래스를 사용하려면 추가
 
 namespace CPPPP
 {
